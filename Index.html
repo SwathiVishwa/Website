@@ -1,4 +1,5 @@
 <!Doctype html>
+<html>
 <head>
 <title>Synergy</title>
  <meta charset="utf-8">
@@ -7,12 +8,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="assets/plugin/slick/slick.css" type="text/css">
+    <link rel="stylesheet" href="assets/plugin/slick/slick-theme.css" type="text/css">
+
 </head>
 <body>
 	<nav class="navbar navbar navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img src="logoo.png"></a>
+      <a class="navbar-brand" href="#"><img src="logo.png"></a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>HOME</a></li>
@@ -24,4 +29,86 @@ ABOUT US</a></li>
     </ul>
   </div>
 </nav>
+  <!--Slick-->
+   <div class="container-fluid">
+        <div class="row">
+            <div class="slickcarosel">
+                <div class="bg" style="background-image: url(assets/img/first.jpg);"></div>
+                <div class="bg" style="background-image: url(assets/img/second.jpg);"></div>
+                <div class="bg" style="background-image: url(assets/img/third.jpg);"></div>
+            </div>
+        </div>
+    </div>
+   <!--slick-->
+   <script src="https://swasatz.github.io/scrollToTop/scrollToTop.min.js"></script>
+    <div class="scroll"></div>
+    <script>
+        $(document).ready(function() {
+            $(".scroll").scrollToTop()
+        });
+    </script>
+    <script src="assets/plugin/slick/slick.min.js"></script>
+    <script src="assets/plugin/trunk8-master/trunk8.js"></script>
+    <script>
+        $(document).ready(function() {
+            slickslider();
+            slickcaroselUpcoming();
+            trunkcate()
+        });
+        $(window).resize(function() {
+            trunkcate()
+        });
+
+        function trunkcate() {
+            $(".trunkate-three").trunk8({
+                lines: 3
+            })
+        }
+
+        function slickslider() {
+            $(".slickcarosel").slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                infinite: true
+            })
+        }
+
+        function slickcaroselUpcoming() {
+            $(".slickcaroselUpcoming").slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                infinite: true,
+                responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: false
+                    }
+                }, {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }, {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }]
+            });
+            $(".slickcaroselUpcoming").on("beforeChange", function(e, f, g, h) {
+                $(".trunkate-three").trunk8({
+                    lines: 3
+                })
+            })
+        };
+    </script>
 </body></html>
